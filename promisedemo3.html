@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let complete = true;
+
+        function prom(complete)
+        {
+            return  new Promise(function(resolve,reject)
+            { 
+                console.log("pending"); 
+                setTimeout(()=>{ 
+                    if(complete)
+                {
+                    resolve("successfull");
+                }
+                else
+                {
+                    reject("reject promise failed");
+                }
+
+                }, 3000)
+
+            });
+
+        }
+        
+
+       // console.log(prom);
+       let onfulfillment = (result) =>
+       {
+        console.log("onfulfillment : "+ result);
+       }
+       let onrejction = (result) =>
+       {
+        console.log(" onrejction : "+result);
+       }
+
+       prom(complete).then(onfulfillment).catch(onrejction);
+    </script>
+</body>
+</html>
